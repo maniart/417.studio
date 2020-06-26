@@ -1,0 +1,266 @@
+/* 
+  variables
+*/
+:root {
+  --layer-0: 0;
+  --layer-1: 10;
+  --layer-2: 20;
+  --layer-3: 30;
+  --layer-4: 40;
+  --layer-5: 50;
+  --layer-6: 60;
+  --layer-7: 70;
+  --layer-8: 80;
+  --layer-9: 90;
+  --layer-10: 100;
+  --layer-11: 100;
+  --layer-12: 110;
+  --layer-13: 130;
+  --layer-14: 140;
+  --layer-15: 150;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-palegreen: rgb(162, 194, 168);
+  --font-size-base: 16px;
+  --font-width-100: 100;
+  --font-width-200: 200;
+  --font-width-300: 300;
+  --font-width-400: 400;
+  --font-width-500: 500;
+  --font-width-600: 600;
+  --font-width-800: 800;
+  --font-width-900: 900;
+}
+
+/* 
+  animations
+*/
+@keyframes appear {
+  from {
+    transform: translateX(calc(var(--unit) * -0.5));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dots {
+  50% {
+    transform: translateX(-31px);
+  }
+}
+
+@keyframes dot {
+  50% {
+    transform: translateX(96px);
+  }
+}
+
+
+
+/* 
+  global styles
+*/
+::selection { 
+  background: var(--yellow);
+}
+
+html, body {
+  font-size: var(--font-size-base);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+#color-fade {
+  background-color: var(--color-black);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  z-index: var(--layer-15);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav li {
+  display: flex;
+  font-size: 1.5em;
+  line-height: 1;
+  font-weight: var(--font-width-600);
+  margin: 0 0.2em;
+}
+
+.nav li.active {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container.half {
+  height: 50vh;
+}
+
+.container.third {
+  height: 33.3vh;
+}
+
+.thumb-through {
+  margin: 10vh 0;
+}
+
+.blurb {
+  letter-spacing: 0.05em;
+  line-height: 1.55;
+  width: 85vw;
+  font-size: 1.45em;
+  font-weight: var(--font-width-400);
+}
+
+.fullbleed {
+  width: 100%;
+  height: 100%;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: repeat;
+  background-size: 100%;
+}
+
+.photo-stack {
+  cursor: pointer;
+  display: flex;
+  width: 38%;
+  height: auto;
+  position: relative;
+}
+
+.photo {
+  top: 50%; 
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  position: absolute;
+}
+
+.photo-stack.layered > .photo {
+  border: 2px solid black;
+}
+
+.photo-stack.layered > .photo:hover {
+  z-index: var(--layer-1);
+}
+
+.gates {
+  width: 100vw; height: 100vh;
+  position: relative;
+}
+
+.gate {
+  width: 171px;
+  height: 144px;
+  position: absolute;
+}
+
+.grid-gate {
+  border: 1px solid red;
+  transform: scale(1);
+
+}
+
+.arc {
+  fill:none;
+  stroke:var(--color-black);
+  transform: scale(0.1);
+}
+
+/* 
+  equivalent of Tachyon's `ns`
+  everything above mobile size
+*/
+@media screen and (min-width: 30em) {
+  .blurb {
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+  .nav li {
+    display: flex;
+    font-size: 2em;
+    margin: 0 0.5em;
+  }
+}
+
+/* 
+  equivalent of Tachyon's `m`
+  covers roughly tablets
+*/
+@media screen and (min-width: 30em) and (max-width: 60em) { 
+  .blurb {
+    width: 80vw;
+    letter-spacing: 0.02em;
+    font-size: 1.65em;
+  }
+}
+
+/* 
+  equivalent of Tachyon's `l`
+  covers roughly desktops
+*/
+@media screen and (min-width: 60em) {
+  .blurb {
+    width: 85vw;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    font-size: 2.5em;
+  }
+  .nav li {
+    font-size: 3em;
+    margin: 0 0.5em;
+  }
+}
+
+/* 
+  covers larger desktops
+*/
+@media screen and (min-width: 80em) {
+  .blurb {
+    width: 65vw;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    font-size: 2.5em;
+  }
+  .nav li {
+    font-size: 3.5em;
+    margin: 0 0.5em;
+  }
+}
